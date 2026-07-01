@@ -294,42 +294,5 @@ src/
 │   ├── dependencyExtractor.js
 ```
 
----
 
-# Future Improvements
 
-- Circular dependency detection
-- Graph rebuild on server restart
-- Topological sorting optimization
-- WebSocket-based live updates
-- Multi-sheet support
-
----
-
-# Learning Outcomes
-
-Through this project I learned:
-
-- Expression parsing
-- Lexical analysis
-- Stack-based computation
-- Graph modeling
-- DFS propagation
-- State persistence
-- Backend architecture design
-- Dependency management
-
----
-
-# Run Locally
-
-```bash
-npm install
-npm run start
-```
-
-Server runs on:
-
-```txt
-http://localhost:3000
-```
