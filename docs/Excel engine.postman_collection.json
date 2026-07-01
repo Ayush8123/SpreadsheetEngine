@@ -1,0 +1,28 @@
+{
+  "info": {
+    "_postman_id": "bee58427-8e19-417b-8f11-d6f082ddf3e7",
+    "name": "Excel engine",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41806396"
+  },
+  "item": [
+    {
+      "name": "Set a cell with value",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "## POST `/sheet/set`\n\nCreates or updates a spreadsheet cell.\n\nThis endpoint supports:\n\n\\- Storing direct numeric values  \n\\- Storing formulas  \n\\- Automatic formula evaluation  \n\\- Dependency tracking  \n\\- Auto-recalculation of dependent cells\n\n\\---\n\n### Set a direct value\n\n\n{\n  \"cell\": \"A1\",\n  \"value\": 10\n}\n\n### Set a formula\n\n\n{\n  \"cell\": \"C1\",\n  \"formula\": \"=A1+B1\"\n}\n\n\n\nFormula is parsed using:\n\nTokenization  \nShunting Yard Algorithm  \nReverse Polish Notation (RPN)\n\n### Auto Recalculation\n\nIf dependent formulas exist:  \nC1 = =A1+B1  \nD1 = =C1\\*2\n\nand then updating cell \"A1\"  \nAutomatically updates: C1 and D1.  \nThis is handled using a dependency graph and DFS traversal.\n\nEither value or formula must be provided.\n\nresponse:\n\n{\n  \"message\": \"Cell updated successfully\"\n}\n"
+      },
+      "response": []
+    },
+    {
+      "name": "Get value of cell ( evaluating the formula)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "# By this we can find value of any cell\n\n> this will first do the tokenizations and then use the stack based formula evaluator to evaluate the fomrula. \n  \n\n### **How to use this endpoint ?**\n\nwe have to pass as {formula : \"A1+10\"} to find value of cell A1 + 10.\n\n- A1+10\n    \n- A2+A3\n    \n- (A1+B2)\\*C3\n    \n- 10\\*3 + 5 \\*C1 and so on"
+      },
+      "response": []
+    }
+  ]
+}
